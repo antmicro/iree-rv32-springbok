@@ -35,8 +35,9 @@ namespace Antmicro.Renode.Peripherals.CPU
                                 uint hartId = 0,
                                 PrivilegeArchitecture privilegeArchitecture = PrivilegeArchitecture.Priv1_11,
                                 Endianess endianness = Endianess.LittleEndian,
-                                string cpuType = "rv32imfv")
-            : base(null, cpuType, machine, hartId, privilegeArchitecture, endianness)
+                                string cpuType = "rv32imfv",
+                                IRiscVTimeProvider timeProvider = null)
+            : base(timeProvider, cpuType, machine, hartId, privilegeArchitecture, endianness)
         {
             RegisterCustomCSRs();
 
