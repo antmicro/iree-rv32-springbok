@@ -64,7 +64,7 @@ function(iree_model_input)
     set(_INPUT_FILENAME ${_RULE_SRC_TRIM})
   endif()
 
-  set(_GEN_INPUT_SCRIPT "${CMAKE_SOURCE_DIR}/build_tools/gen_mlmodel_input.py")
+  set(_GEN_INPUT_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/../../build_tools/gen_mlmodel_input.py")
   set(_OUTPUT_BINARY ${_RULE_NAME})
   set(_ARGS)
   list(APPEND _ARGS "--i=${_INPUT_FILENAME}")
