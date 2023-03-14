@@ -87,7 +87,9 @@ include_directories(springbok/include)
 
 message(STATUS "Include IREE source at ${IREE_SOURCE_DIR}")
 # Build IREE runtime libraries.
-add_subdirectory(${IREE_SOURCE_DIR} iree)
+if (PROJECT_IS_TOP_LEVEL)
+  add_subdirectory(${IREE_SOURCE_DIR} iree)
+endif()
 
 # Apply IREE's CMake variables and build options so we can use IREE build
 # functions properly in this project.
