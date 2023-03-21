@@ -334,8 +334,8 @@ namespace Antmicro.Renode.Peripherals.CPU
                             Machine.LocalTimeSource.ExecuteInNearestSyncedState( __ => {
                                 if (InitMemSelect.Value)
                                 {
-                                    for(long writeAddress = InitStartAddress.Value & ~(InstructionPageSize - 1);
-                                writeAddress < ((InitEndAddress.Value + InstructionPageSize - 1) & ~(InstructionPageSize - 1));
+                                    for(long writeAddress = (int)InitStartAddress.Value & ~(InstructionPageSize - 1);
+                                writeAddress < (((int)InitEndAddress.Value + InstructionPageSize - 1) & ~(InstructionPageSize - 1));
                                 writeAddress += InstructionPageSize)
                                     {
                                         IMem.WriteBytes(writeAddress, InstructionErasePattern, 0, InstructionPageSize);
@@ -343,8 +343,8 @@ namespace Antmicro.Renode.Peripherals.CPU
                                 }
                                 else
                                 {
-                                    for(long writeAddress = InitStartAddress.Value & ~(DataPageSize - 1);
-                                writeAddress < ((InitEndAddress.Value + DataPageSize - 1) & ~(DataPageSize - 1));
+                                    for(long writeAddress = (int)InitStartAddress.Value & ~(DataPageSize - 1);
+                                writeAddress < (((int)InitEndAddress.Value + DataPageSize - 1) & ~(DataPageSize - 1));
                                 writeAddress += DataPageSize)
                                     {
                                         DMem.WriteBytes(writeAddress, DataErasePattern, 0, DataPageSize);
