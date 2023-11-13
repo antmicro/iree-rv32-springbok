@@ -34,15 +34,21 @@ DOWNLOAD_DIR="${DOWNLOAD_DIR:-build/tmp}"
 TOOLCHAIN_DIR="${TOOLCHAIN_DIR:-build}"
 
 TOOLCHAIN_TARBALL="toolchain_iree_rv32.tar.gz"
+TOOLCHAIN_VERSION=$TOOLCHAIN_TARBALL
+
+if [ -n "$1" ]; then
+	TOOLCHAIN_VERSION=$1
+fi
 
 trap clean EXIT
 
 echo "Download ${TOOLCHAIN_TARBALL} from GCS..."
-DOWNLOAD_URL="https://storage.googleapis.com/shodan-public-artifacts/${TOOLCHAIN_TARBALL}"
+DOWNLOAD_URL="https://storage.googleapis.com/shodan-public-artifacts/${TOOLCHAIN_VERSION}"
 mkdir -p "${DOWNLOAD_DIR}"
 
-wget --progress=dot:giga -P "${DOWNLOAD_DIR}" "${DOWNLOAD_URL}"
-wget -P "${DOWNLOAD_DIR}" "${DOWNLOAD_URL}.sha256sum"
+wget --progress=dot:giga -O "${DOWNLOAD_DIR}/${TOOLCHAIN_TARBALL}" "${DOWNLOAD_URL}"
+wget -O "${DOWNLOAD_DIR}/${TOOLCHAIN_TARBALL}.sha256sum" "${DOWNLOAD_URL}.sha256sum"
+
 pushd "${DOWNLOAD_DIR}" > /dev/null
 # tarball may be timestamped during build. Update the filename in sha256sum
 # file to check.
