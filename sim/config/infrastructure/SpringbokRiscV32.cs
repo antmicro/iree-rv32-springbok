@@ -37,7 +37,7 @@ namespace Antmicro.Renode.Peripherals.CPU
                                 Endianess endianness = Endianess.LittleEndian,
                                 string cpuType = "rv32imfv_zicsr",
                                 IRiscVTimeProvider timeProvider = null)
-            : base(timeProvider, cpuType, machine, hartId, privilegeArchitecture, endianness)
+            : base(machine, cpuType, timeProvider, hartId, privilegeArchitecture, endianness)
         {
             RegisterCustomCSRs();
 
