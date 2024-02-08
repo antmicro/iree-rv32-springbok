@@ -36,6 +36,8 @@ Finally Renode can be downloaded using:
 ./build_tools/download_renode.py
 ```
 
+**NOTE**: Renode versions released before 2023.01.26 are not supported.
+
 Make sure your `${HOME}/.local/bin` is in your PATH:
 
 ```bash
