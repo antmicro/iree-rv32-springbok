@@ -89,7 +89,7 @@ message(STATUS "Include IREE source at ${IREE_SOURCE_DIR}")
 # Build IREE runtime libraries.
 if (PROJECT_IS_TOP_LEVEL)
   add_subdirectory(${IREE_SOURCE_DIR} iree)
-endif()
+endif (PROJECT_IS_TOP_LEVEL)
 
 # Apply IREE's CMake variables and build options so we can use IREE build
 # functions properly in this project.
@@ -108,4 +108,6 @@ PATHS
 REQUIRED)
 link_libraries(m)
 # Add the included directory here.
-add_subdirectory(samples)
+if (PROJECT_IS_TOP_LEVEL)
+  add_subdirectory(samples)
+endif (PROJECT_IS_TOP_LEVEL)
