@@ -33,11 +33,11 @@ namespace Antmicro.Renode.Peripherals.CPU
     {
         public SpringbokRiscV32(Core.Machine machine,
                                 uint hartId = 0,
-                                PrivilegeArchitecture privilegeArchitecture = PrivilegeArchitecture.Priv1_11,
+                                PrivilegedArchitecture privilegedArchitecture = PrivilegedArchitecture.Priv1_11,
                                 Endianess endianness = Endianess.LittleEndian,
                                 string cpuType = "rv32imfv_zicsr",
                                 IRiscVTimeProvider timeProvider = null)
-            : base(machine, cpuType, timeProvider, hartId, privilegeArchitecture, endianness)
+            : base(machine, cpuType, timeProvider, hartId, privilegedArchitecture, endianness)
         {
             RegisterCustomCSRs();
 
